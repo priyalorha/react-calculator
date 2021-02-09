@@ -1,0 +1,20 @@
+.button-wrapper
+{
+    height:4em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bolder;
+    font-size: 1.5rem;
+    background-color: cornflowerblue;
+    color: black;
+    flex:1;
+    outline: 1px solid #887;
+}
+
+
+.operator
+{
+    background-color: darkorchid;
+    columns: yellow;
+}

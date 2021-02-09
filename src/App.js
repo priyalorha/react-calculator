@@ -1,25 +1,72 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import './App.css'
+import Button from './components/Button'
+import { ClearButton } from './components/ClearButton';
+import { Input } from './components/Input';
+import { evaluate } from 'mathjs'; 
+export default class App extends Component {
+  constructor(props)
+  {
+    super(props)
+    this.state = {
+      input:""
+    };
+  }
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+   addToInput = val =>{
+    this.setState ({input:this.state.input +val})
 
-export default App;
+  }
+  evaluate =()=>{
+    this.setState({input:evaluate(this.state.input)})
+  }
+  render() {
+    return (
+      <div className="app">
+        <div className="calc-wrapper">
+          <div className="input">
+          <Input input={this.state.input}>
+          Priyaa
+          </Input>
+          </div>
+          <div className="row">
+            <ClearButton handlerClear ={()=>this.setState({input:""})}> Clear</ClearButton>
+          </div>
+          <div className="row">
+            <Button handleClick ={this.addToInput} >1</Button >
+            <Button handleClick ={this.addToInput}>2</Button>
+            <Button handleClick ={this.addToInput}>3</Button>
+            <Button handleClick ={this.evaluate}>=</Button>
+            </div>
+            <div className="row">
+            <Button handleClick ={this.addToInput}>4</Button>
+            <Button handleClick ={this.addToInput}>5</Button>
+            <Button handleClick ={this.addToInput}>6</Button>
+            <Button handleClick ={this.addToInput}>-</Button>
+            </div>
+            <div className="row">
+            <Button handleClick ={this.addToInput}>7</Button>
+            <Button handleClick ={this.addToInput}>8</Button>
+            <Button handleClick ={this.addToInput}>9</Button>
+            <Button handleClick ={this.addToInput}>+</Button>
+            </div>
+            <div className="row">
+            <Button handleClick ={this.addToInput}>/</Button>
+            <Button handleClick ={this.addToInput}>0</Button>
+            
+            <Button handleClick ={this.addToInput}>.</Button>
+            <Button handleClick ={this.addToInput}>*</Button>
+ 
+            
+            </div>
+            
+            
+            
+           
+          </div>
+        </div>
+      
+      
+    )
+  }
+};
